@@ -20,6 +20,7 @@ services:
     depends_on:
       - mysql
     image: wordpress:php8.0-apache
+    user: "1000:1000"
     ports:
       - '80:80'
     volumes:
