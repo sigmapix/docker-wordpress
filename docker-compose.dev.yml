@@ -2,12 +2,12 @@ version: '3.3'
 
 services:
   # Database
-  db:
+  mysql:
     image: mysql:5.7
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     environment:
-      DB_HOST: localhost
+      DB_HOST: mysql
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
@@ -16,16 +16,16 @@ services:
       - wpsite
 
   # Wordpress
-  wordpress:
+  apache:
     depends_on:
-      - db
+      - mysql
     image: wordpress:php8.0-apache
     ports:
       - '80:80'
     volumes:
-      - 'web/:/var/www/html'
+      - './web/:/var/www/html'
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
     networks:
@@ -33,4 +33,4 @@ services:
 networks:
   wpsite:
 volumes:
-  db_data:
+  mysql_data:
