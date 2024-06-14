@@ -6,14 +6,14 @@ services:
       - './entrypoint.sh:/entrypoint.sh'
     entrypoint: ["/entrypoint.sh", "apache2"]
     environment:
-      VIRTUAL_HOST: wordpress.docker.casa
+      VIRTUAL_HOST: corp.dxomark.docker.casa
       VIRTUAL_PORT: 80
       OWNER_UID: 1000
       OWNER_GID: 1000
       WORDPRESS_DB_HOST: mysql:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: dxomark_corp
+      WORDPRESS_DB_USER: dxomark
+      WORDPRESS_DB_PASSWORD: dxomark
       WORDPRESS_DEBUG: 1
       DEV_MODE: 1
     networks:
@@ -25,9 +25,9 @@ services:
     environment:
       DB_HOST: mysql
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_DATABASE: dxomark_corp
+      MYSQL_USER: dxomark
+      MYSQL_PASSWORD: dxomark
     networks:
       - wordpress
 networks:
