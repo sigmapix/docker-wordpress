@@ -18,6 +18,7 @@ services:
       DEV_MODE: 1
     networks:
       - wordpress
+      - nginx-proxy
   mysql:
     image: mysql:5.7
     volumes:
@@ -32,5 +33,7 @@ services:
       - wordpress
 networks:
   wordpress:
+  nginx-proxy:
+    external: true
 volumes:
   mysql_data:
