@@ -48,6 +48,9 @@ task('wordpress:get', function () {
     info('Database zipped!');
     run('cd .. && tar -czf {{alias}}.tar.gz web/');
     download('{{deploy_path}}/../{{alias}}.tar.gz', '{{alias}}.tar.gz');
+    cd('{{deploy_path}}');
+    run('rm {{alias}}.db.sql.gz');
+    run('cd .. && mv {{alias}}.tar.gz ' . date("Ymd-His") . '.tar.gz');
     info('Wordpress downloaded!');
 });
 
