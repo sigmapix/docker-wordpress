@@ -33,7 +33,7 @@ fi
 
 
 apt-get update && apt-get install -y default-mysql-client
-
+docker-php-ext-install pdo pdo_mysql # for DxO (dxo-wp)
 
 
 docker-entrypoint.sh apache2-foreground
